@@ -65,7 +65,7 @@ if __name__ == "__main__":
     state_size = env.observation_space.shape[0]
     action_size = env.action_space.n
     agent = DQNAgent(state_size, action_size)
-    # agent.load("./save/cartpole-dqn.h5")
+    agent.load("./save/cartpole-dqn.h5")
     done = False
     batch_size = 32
 
@@ -73,7 +73,7 @@ if __name__ == "__main__":
         state = env.reset()
         state = np.reshape(state, [1, state_size])
         for time in range(500):
-            # env.render()
+            env.render()
             action = agent.act(state)
             next_state, reward, done, _ = env.step(action)
             reward = reward if not done else -10
